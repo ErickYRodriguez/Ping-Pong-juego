@@ -37,42 +37,42 @@
     font = pygame.font.Font(None, 36)
 
     def update_score():
-        text = font.render(f"{left_score} - {right_score}", True, WHITE)
-        win.blit(text, ((WIDTH - text.get_width()) // 2, 10))
+    text = font.render(f"{left_score} - {right_score}", True, WHITE)
+    win.blit(text, ((WIDTH - text.get_width()) // 2, 10))
 
     def show_winner(winner):
-        text = font.render(f"¡Jugador {winner} gana!", True, WHITE)
-        win.blit(text, ((WIDTH - text.get_width()) // 2, HEIGHT // 2))
-        return pygame.time.get_ticks()
+    text = font.render(f"¡Jugador {winner} gana!", True, WHITE)
+    win.blit(text, ((WIDTH - text.get_width()) // 2, HEIGHT // 2))
+    return pygame.time.get_ticks()
 
     running = True
     winner_shown_time = 0
     winner_display_time = 3000  # Tiempo en milisegundos (3 segundos)
 
     while running:
-        win.fill(BLACK)
+    win.fill(BLACK)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w:
-                    left_paddle_up = True
-                elif event.key == pygame.K_s:
-                    left_paddle_down = True
-                elif event.key == pygame.K_UP:
-                    right_paddle_up = True
-                elif event.key == pygame.K_DOWN:
-                    right_paddle_down = True
-           elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_w:
-                    left_paddle_up = False
-                elif event.key == pygame.K_s:
-                    left_paddle_down = False
-                elif event.key == pygame.K_UP:
-                    right_paddle_up = False
-                elif event.key == pygame.K_DOWN:
-                    right_paddle_down = False
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                left_paddle_up = True
+            elif event.key == pygame.K_s:
+                left_paddle_down = True
+            elif event.key == pygame.K_UP:
+                right_paddle_up = True
+            elif event.key == pygame.K_DOWN:
+                right_paddle_down = True
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_w:
+                left_paddle_up = False
+            elif event.key == pygame.K_s:
+                left_paddle_down = False
+            elif event.key == pygame.K_UP:
+                right_paddle_up = False
+            elif event.key == pygame.K_DOWN:
+                right_paddle_down = False
 
     if left_paddle_up and left_paddle_y > 0:
         left_paddle_y -= PADDLE_SPEED
